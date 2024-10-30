@@ -1,6 +1,7 @@
+"""NÃO CONSEGUE ENCONTRAR SE FOR O '1' QUE TA FALTANDO"""
+
 def peca(quant, list, list_natural = []):
     posi_meio = len(list)//2
-    facilitar = list[posi_meio]
 
     if list[posi_meio]+1 not in list and list[posi_meio]+1 not in list_natural: # Verificando se ja achou o faltante
         return list[posi_meio]+1
@@ -21,6 +22,7 @@ def peca(quant, list, list_natural = []):
 
 a = 60
 b = [num for num in range(1,61)]
+
 
 for num in b:
     lista = b[:]
