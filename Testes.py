@@ -11,7 +11,7 @@ b1, b2 = b.split(",")
 
 print(b1, b2)
 
-v = []
+
 l = [c.split() for c in input("Digita: ")]
-v.append(l)
+v = l[:]
 print(v)
