@@ -1,6 +1,6 @@
 from typing import List
 
-def substring_0_lacos(texto: str, idx1: int = 0, idx2: int = 1) -> List[str]:
+def substring_0_lacos(texto: str, idx1: int = 0, idx2: int = 1) -> str | list[str]:
 
     lista = []
 
