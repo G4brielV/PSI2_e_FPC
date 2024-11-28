@@ -15,7 +15,6 @@ def substring_0_lacos(texto: str, idx1: int = 0, idx2: int = 1) -> str | list[st
 
     lista.extend(substring_0_lacos(texto, idx1, idx2+1))
 
-    print(lista)
 
     return lista
 
