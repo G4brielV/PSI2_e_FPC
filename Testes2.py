@@ -1,12 +1,21 @@
-a = "ABC"
+def permutacao(n, posi=0):
 
-print(a)
+    resultado = []
 
-lista = ["A", "B", "C", "D"]
-print(lista[1:])
-print(lista[2:])
-print(lista[1:2])
-print(lista[2:]+lista[1:2])
+    if len(n)-1 == posi:
+        return ["".join(n)]
 
-print(len(lista))
+    for p in range(posi, len(n)):
 
+        n[p], n[posi] = n[posi], n[p]
+
+        resultado.extend(permutacao(n, posi+1))
+
+        n[posi], n[p] = n[p], n[posi]
+
+    return resultado
+
+
+# Exemplo de uso
+simbolos = ["A", "B", "C"]
+print(permutacao(simbolos))
