@@ -19,9 +19,7 @@ def TSP_forca_bruta():
 
 
 
-
-
-def melhor_caminho(pontos, entrada: List[str], pos: int = 0, melhor_preco = float("inf"), caminho = "") -> tuple[int | float | str | Any, str]:
+def melhor_caminho(pontos, entrada: List[str], pos: int = 0, melhor_preco = float("inf"), caminho = "") -> tuple[int|str]:
 
     # Caso base: quando a posição chega ao final da lista, temos uma permutação completa
     if pos == len(entrada) - 1:
@@ -47,7 +45,7 @@ def melhor_caminho(pontos, entrada: List[str], pos: int = 0, melhor_preco = floa
     return melhor_preco, caminho
 
 
-def distancia_Manhattan(ponto1: Tuple[str], ponto2: Tuple[str]):
+def distancia_Manhattan(ponto1: Tuple[str], ponto2: Tuple[str]) -> int:
     distancia = 0
     if ponto1[0] >= ponto2[0]:
         distancia += ponto1[0] - ponto2[0]
@@ -64,22 +62,22 @@ def distancia_Manhattan(ponto1: Tuple[str], ponto2: Tuple[str]):
     return distancia
 
 
-def testar_caminho(pontos, caminho):
-    percurso_atual = 0
+def testar_caminho(pontos: Dict[str, Tuple[str]], caminho:List[str]) -> int:
+    percurso = 0
     for c in range(len(caminho)):
         if c == 0:
-            percurso_atual += distancia_Manhattan(pontos["R"], pontos[caminho[c]])  # Restaurante -> 1 ponto
-            percurso_atual += distancia_Manhattan(pontos[caminho[c]], pontos[caminho[c + 1]])  # 1 ponto ate o 2
+            percurso += distancia_Manhattan(pontos["R"], pontos[caminho[c]])  # Restaurante -> 1 ponto
+            percurso += distancia_Manhattan(pontos[caminho[c]], pontos[caminho[c + 1]])  # 1 ponto ate o 2
 
         elif c == len(caminho) - 1:
-            percurso_atual += distancia_Manhattan(pontos["R"], pontos[caminho[-1]])  # Último ponto -> restaurante
+            percurso += distancia_Manhattan(pontos["R"], pontos[caminho[-1]])  # Último ponto -> restaurante
 
         else:
-            percurso_atual += distancia_Manhattan(pontos[caminho[c]],
+            percurso += distancia_Manhattan(pontos[caminho[c]],
                                                   pontos[caminho[c + 1]])  # De um ponto ate o próximo
 
 
-    return percurso_atual
+    return percurso
 
 
 
