@@ -11,9 +11,9 @@ def TSP_forca_bruta():
     for i in range(quant_pontos):
         entrada = str(input(f"Digite as coordenadas x, y separadas por vírgula (ex: 1,2) do ponto de entrega {i+1}: "))
         x, y = map(int, entrada.split(","))
-        pontos[f"{i+1}"] = (x,y)
+        pontos[f"P{i+1}"] = (x,y)
 
-    preco, caminho = melhor_caminho(pontos, [""+str(c+1) for c in range(quant_pontos)])
+    preco, caminho = melhor_caminho(pontos, ["P"+str(c+1) for c in range(quant_pontos)])
 
     return caminho
 
