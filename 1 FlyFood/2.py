@@ -13,9 +13,8 @@ def TSP_forca_bruta():
         x, y = map(int, entrada.split(","))
         pontos[f"P{i+1}"] = (x,y)
 
-    preco, caminho = melhor_caminho(pontos, ["P"+str(c+1) for c in range(quant_pontos)])
+    return melhor_caminho(pontos, ["P"+str(c+1) for c in range(quant_pontos)])
 
-    return caminho
 
 
 
@@ -42,7 +41,11 @@ def melhor_caminho(pontos, entrada: List[str], pos: int = 0, melhor_preco = floa
         # Reverte a troca para restaurar o estado original da lista
         entrada[pos], entrada[i] = entrada[i], entrada[pos]
 
-    return melhor_preco, caminho
+    if pos == 0:
+        return caminho
+
+    else:
+        return melhor_preco, caminho
 
 
 def distancia_Manhattan(ponto1: Tuple[str], ponto2: Tuple[str]) -> int:
