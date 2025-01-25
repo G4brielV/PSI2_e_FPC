@@ -24,17 +24,20 @@ class Pilha(Lista_2ENC):
 
     #   deleteFirst
     def pop(self):
+        no_removido = self._inicio
         # Verifica se ta vazia
         if not self.isVazia():
             # Verifica se tem apenas 1 elemento:
             #    - Se tiver não precisa mexer no depois do inicio, afinal ele não existe
-            if self._inicio._prox is None:
+            if no_removido._prox is None:
                 pass
 
             else:
                 # Retirando o ant do segundo (depois do inicio), transformando em None. Afinal ele se tornará o primeiro
-                self._inicio._prox._ant = None
+                no_removido._prox._ant = None
             self._inicio = self._inicio._prox
+
+        return no_removido
 
     # Definindo o print da PILHA
     def __str__(self):
@@ -50,8 +53,8 @@ if __name__ == "__main__":
         pilha.push(i)
         print(f"{pilha}")
 
-    print(f"\nDELETE FIRST:\n")
+    print(f"\nDELETE FIRST\n")
     for _ in range(len(l)):
         print(f"{pilha}")
-        pilha.pop()
+        print("Dado Removido: ", pilha.pop())
     print(f"{pilha}")

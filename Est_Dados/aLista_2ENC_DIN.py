@@ -8,7 +8,7 @@ class No(): #
 
     # Definindo o print do No
     def __str__(self):
-        return f"Dado: {self._dado}"
+        return f"{self._dado}"
 
 
 class Lista_2ENC():

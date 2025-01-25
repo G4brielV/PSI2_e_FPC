@@ -8,19 +8,21 @@ class Fila(Lista_2ENC):
         self.insertLast(dado)
 
     def deleteFirst(self):
+        no_removido = self._inicio
         #Verifica se ta vazia
         if not self.isVazia():
             # Verifica se tem apenas 1 elemento:
             #   - 1 ELEMENTO:
             #       Removendo ele o inicio o e o FIM tem q receber None
-            if self._inicio._prox == None:
+            if no_removido._prox == None:
                 self._fim = None
 
             else:
                 # Retirando o anterior do segundo, transformando em None
-                self._inicio._prox._ant = None
+                no_removido._prox._ant = None
             self._inicio = self._inicio._prox
 
+        return no_removido
     # Definindo o print da FILA
     def __str__(self):
         return "Fila: " + super().__str__()
@@ -38,5 +40,5 @@ if __name__ == "__main__":
     print(f"\nDELETE FIRST\n")
     for _ in range(len(l)):
         print(f"{fila}")
-        fila.deleteFirst()
+        print("Dado Removido: ",fila.deleteFirst())
     print(f"{fila}")
