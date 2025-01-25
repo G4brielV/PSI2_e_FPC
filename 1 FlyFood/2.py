@@ -1,32 +1,41 @@
+import time
 from typing import List, Tuple, Dict, Any
 
 
 def TSP_forca_bruta():
 
-    restaurante = input(f"Digite as coordenadas x, y separadas por vírgula (ex: 1,2) do restaurante: ")
-    x, y = map(int, restaurante.split(","))
-    pontos = {"R": (x,y)}
-    quant_pontos = int(input("Quantidade de Pontos de entrega: "))
 
-    for i in range(quant_pontos):
-        entrada = str(input(f"Digite as coordenadas x, y separadas por vírgula (ex: 1,2) do ponto de entrega {i+1}: "))
-        x, y = map(int, entrada.split(","))
-        pontos[f"P{i+1}"] = (x,y)
+    pontos = {"R": (12, 87),
+              "P1": (23,48), "P2": (32,64), "P3": (90,3), "P4":(64,76), "P5":(54,52),
+              "P6":(2,34),
+              "P7":(26,72),
+              "P8":(38,17),
+              "P9":(10,90),
+              "P10":(41,52),
+              "P11":(65,11),
+              "P12":(32,97)}
 
-    return melhor_caminho(pontos, ["P"+str(c+1) for c in range(quant_pontos)])
+    antes = time.time()
+    melhor_caminho(pontos, ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10", "P11", "P12"])
+    depois = time.time()
+
+    return depois - antes
 
 
 
 
-def melhor_caminho(pontos, entrada: List[str], pos: int = 0, melhor_preco = float("inf"), caminho = "") -> tuple[int|str]:
+def melhor_caminho(pontos: Dict[str, Tuple[str]], entrada: List[str], pos: int = 0, melhor_preco = float("inf"), caminho = "") -> str:
 
     # Caso base: quando a posição chega ao final da lista, temos uma permutação completa
     if pos == len(entrada) - 1:
-        preco_caminho = testar_caminho(pontos, entrada)
+        preco_caminho = calcular_caminho(pontos, entrada)
 
         if preco_caminho < melhor_preco:
             melhor_preco = preco_caminho
             caminho = " ".join(entrada)
+
+        if pos == 0:
+            return caminho
 
         return melhor_preco, caminho
 
@@ -62,10 +71,10 @@ def distancia_Manhattan(ponto1: Tuple[str], ponto2: Tuple[str]) -> int:
     else:
         distancia += ponto2[1] - ponto1[1]
 
-    return distancia
+    return int(distancia)
 
 
-def testar_caminho(pontos: Dict[str, Tuple[str]], caminho:List[str]) -> int:
+def calcular_caminho(pontos: Dict[str, Tuple[str]], caminho:List[str]) -> int:
     percurso = 0
     for c in range(len(caminho)):
         if c == 0:

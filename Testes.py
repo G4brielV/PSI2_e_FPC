@@ -12,7 +12,14 @@ b1, b2 = b.split(",")
 print(b1, b2)
 
 
-l = [c for c in input("Digita: ")]
-v = l[:]
-print(v)
+# l = [c for c in input("Digita: ")]
+# v = l[:]
+# print(v)
 
+
+for c in range(1,11):
+    x = 9**c
+    y = 10**c
+    print(c)
+    print("Perder: ", x/y)
+    print("Ganhar: ", 1 - x/y)

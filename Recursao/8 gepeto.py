@@ -12,5 +12,5 @@ def gols_sucessoes(m, n, sequencia=""):
     gols_sucessoes(m, n - 1, sequencia + "B")
 
 
-# Exemplo de uso para um placar de 3 x 1
-gols_sucessoes(3, 1)
+# Exemplo de uso para um placar de 2 x 2
+gols_sucessoes(2, 2)
